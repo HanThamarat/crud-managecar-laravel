@@ -18,6 +18,9 @@
                     <x-nav-link href="{{ route('managecar') }}" :active="request()->routeIs('managecar')">
                         {{ __('Manage Car') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('manageuser') }}" :active="request()->routeIs('manageuser')">
+                        {{ __('Manage User') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -147,6 +150,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('managecar') }}" :active="request()->routeIs('managecar')">
                 {{ __('Manage Car') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('manageuser') }}" :active="request()->routeIs('manageuser')">
+                {{ __('Manage User') }}
             </x-responsive-nav-link>
         </div>
 

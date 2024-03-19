@@ -1,7 +1,7 @@
 <div>
     {{-- form create car --}}
     <div class="max-w-7xl mx-auto mt-10 py-8 px-4 rounded-md bg-white">
-        <div class="text-center text-2xl font-medium">
+        <div class="text-center text-3xl font-bold">
             <span>Manage Car</span>
         </div>
         <form>
@@ -59,34 +59,45 @@
         </form>
    </div>
 
-   <div class="max-w-7xl mx-auto mt-5 py-8 px-4 rounded-md bg-white">
-        <div class="text-2xl font-medium">
-            <span>Car Lists</span>
+   <div class="max-w-7xl mx-auto mt-5 mb-5 py-8 px-4 rounded-md bg-white">
+        <div class="flex justify-between items-center">
+            <div class="text-2xl font-medium">
+                <span>Car Lists</span>
+            </div>
+            @include('livewire.components.search-box')
         </div>
         <div class="mt-5" id="cars-lists">
-           
-            
-           
             @foreach ( $carLists as $lists )
             <div class="border rounded-md mt-5">
                 <div class="flex">
                     <div class="bg-gray-100 rounded-md w-1/3">
                         <img src="{{ asset('storage/' . $lists->car_images) }}" alt="">
                     </div>
-                    <div class="w-2/3">
-                        <div class="px-4 py-2 font-medium text-2xl">
-                            <span> {{ $lists->car_name }}</span>
+                    <div class="w-2/3 flex justify-between px-4 py-2">
+                        <div>
+                            <div class="font-medium text-2xl py-2">
+                                <span> {{ $lists->car_name }}</span>
+                            </div>
+                            <div class="font-medium text-base py-2">
+                                <span>เริ่มต้น {{ $lists->from_price }} บาท</span>
+                            </div>
+                            <div class="font-medium text-base py-2">
+                                <span>รายละเอียด : {{ $lists->car_detail }}</span>
+                            </div>
                         </div>
-                        <div class="px-4 py-2 font-medium text-base">
-                            <span>เริ่มต้น {{ $lists->from_price }} บาท</span>
-                        </div>
-                        <div class="px-4 py-2 font-medium text-base">
-                            <span>รายละเอียด : {{ $lists->car_detail }}</span>
+                        <div>
+                            @include('livewire.components.more-options')
+                            @include('livewire.components.delete-button')
+                            @include('livewire.components.form-popup')
+                           {{-- <button wire:click="delete({{ $lists->id }})">Delete</button> --}}
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
+        </div>
+        <div class="my-5">
+            {{ $carLists->links() }}
         </div>
    </div>
 </div>

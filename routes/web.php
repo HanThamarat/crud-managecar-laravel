@@ -32,4 +32,7 @@ Route::middleware([
     Route::get('/managecar', function () {
         return view('crud.managecar');
     })->name('managecar');
+    Route::get('/manageuser', function () {
+        return view('crud.manageuser');
+    })->name('manageuser');
 });
