@@ -3,7 +3,7 @@ version: "3.8"
 services:
   db:
     image: mysql:latest
-    container_name: auth_mysql_db
+    container_name: managecar_mysql_db
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -17,7 +17,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
-    container_name: auth_phpmyadmin
+    container_name: managecar_phpmyadmin
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
