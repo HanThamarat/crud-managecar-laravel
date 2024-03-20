@@ -55,32 +55,42 @@ class CreatePost extends Component
         session()->flash('success', 'Created.');
     }
 
+    public function closeForm() {
+        $this->isActive = false;
+    }
+
     public function delete($car_id) {
         cars::find($car_id)->delete('car_id');
     }
 
+    public $isActive = false;
+
     public function edit($car_id) {
+
+        $this->isActive = true;
 
         $this->editcar_id = $car_id;
         $this->editcar_name = cars::find($car_id)->car_name;
         $this->editfrom_price = cars::find($car_id)->from_price;
         $this->editcar_detail = cars::find($car_id)->car_detail;
 
-        $validated = $this->validate([
-            'editcar_name' => 'required|min:3',
-            'editfrom_price' => 'required|min:3',
-            'editcar_detail' => 'required|min:3',
-        ]);
-
-        session()->flash('success', 'Created.');
     }
 
     public function update() {
+
+        $validated = $this->validate([
+            'editcar_name' => 'required|min:3',
+            'editfrom_price' => 'required|min:3|numeric',
+            'editcar_detail' => 'required|min:3',
+        ]);
+
         cars::find($this->editcar_id)->update([
             'car_name' => $this->editcar_name,
             'from_price' => $this->editfrom_price,
             'car_detail' => $this->editcar_detail,
         ]);
+
+        $this->isActive = false;
     }
 
     public function render(){

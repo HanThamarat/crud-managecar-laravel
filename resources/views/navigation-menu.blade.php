@@ -9,19 +9,8 @@
                         <img src="{{ asset('img/logo.png') }}" alt="" width="100">
                     </a>
                 </div>
-
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('managecar') }}" :active="request()->routeIs('managecar')">
-                        {{ __('Manage Car') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('manageuser') }}" :active="request()->routeIs('manageuser')">
-                        {{ __('Manage User') }}
-                    </x-nav-link>
-                </div>
+                  @livewire('nav-link')
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
