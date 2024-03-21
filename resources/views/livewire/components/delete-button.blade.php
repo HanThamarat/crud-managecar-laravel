@@ -19,8 +19,8 @@
 <script>
     function showDialog() {
         let dialog = document.getElementById('popup-modal');
-        let more = document.getElementById('dropdownDotsHorizontal');
-        more.classList.add('hidden');
+        // let more = document.getElementById('dropdownDotsHorizontal');
+        // more.classList.add('hidden');
         dialog.classList.remove('hidden');
         dialog.classList.add('flex');
     }
