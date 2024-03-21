@@ -1,3 +1,5 @@
 <x-app-layout>
-    @livewire('manage-user')
+    @if (Gate::allows('isAdmin'))
+        @livewire('manage-user')
+    @endif
 </x-app-layout>

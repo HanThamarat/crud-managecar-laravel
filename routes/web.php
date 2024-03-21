@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Gate;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,10 @@ Route::middleware([
         return view('crud.managecar');
     })->name('managecar');
     Route::get('/manageuser', function () {
-        return view('crud.manageuser');
+        if(Gate::allows('isAdmin')) {
+            return view('crud.manageuser');
+        } else {
+            return view('crud.components.err-permission');
+        }
     })->name('manageuser');
 });

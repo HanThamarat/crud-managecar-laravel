@@ -47,10 +47,7 @@ class CreatePost extends Component
 
         cars::create($validated);
 
-        $this->reset('car_name'); 
-        $this->reset('from_price'); 
-        $this->reset('car_detail'); 
-        $this->reset('car_images'); 
+        $this->reset(['car_name', 'from_price', 'car_detail', 'car_images']); 
 
         session()->flash('success', 'Created.');
     }
