@@ -75,8 +75,8 @@ class ManageUser extends Component
         ]);
 
         User::find($this->edit_id)->update([
-            'role' => intval($this->edit_role),
-            'status' => intval($this->edit_status),
+            'role' => $role_convert,
+            'status' => $status_convert,
             'name' => $this->edit_name,
             'email' => $this->edit_email,
         ]);
