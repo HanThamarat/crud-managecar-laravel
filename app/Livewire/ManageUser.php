@@ -61,25 +61,25 @@ class ManageUser extends Component
         $role_convert = strval($this->edit_role);
         $status_convert = strval($this->edit_status);
 
-        // dd([
-        //     $this->edit_id,
-        //     $this->edit_name,
-        //     $this->edit_email,
-        //     $role_convert,
-        //     $status_convert,
-        // ]);
-
+        
         $validated = $this->validate([
             'edit_name' => 'required|min:3',
             'edit_email' => 'required|min:3',
         ]);
 
-        User::find($this->edit_id)->update([
-            'role' => intval($this->edit_role),
-            'status' => intval($this->edit_status),
-            'name' => $this->edit_name,
-            'email' => $this->edit_email,
-        ]);
+        // User::find($this->edit_id)->update([
+        //     'role' => $role_convert,
+        //     'status' => $status_convert,
+        //     'name' => $this->edit_name,
+        //     'email' => $this->edit_email,
+        // ]);
+
+        $model = User::find($this->edit_id);
+        $model->status = $status_convert;
+        $model->role = $role_convert;
+        $model->name = $this->edit_name;
+        $model->email = $this->edit_email;
+        $model->save();
 
         $this->IsActive = false;
     }
