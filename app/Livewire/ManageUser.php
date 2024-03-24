@@ -60,7 +60,6 @@ class ManageUser extends Component
        
         $role_convert = strval($this->edit_role);
         $status_convert = strval($this->edit_status);
-
         
         $validated = $this->validate([
             'edit_name' => 'required|min:3',
